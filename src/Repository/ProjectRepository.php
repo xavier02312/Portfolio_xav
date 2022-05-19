@@ -34,7 +34,7 @@ class ProjectRepository extends Db {
 	public function all()
 	{
 		try {
-			$query = $this->getDb()->query('SELECT * FROM project');
+			$query = $this->getDb()->query('SELECT * FROM project ORDER BY created_at DESC');
 			$projects = $query->fetchAll();
 
 			foreach($projects as $project) {

@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ .'../../Repository/ProjectRepository.php';
-// require_once __DIR__ .'../../Entity/Avis.php';
 
 class HomeController {
 
