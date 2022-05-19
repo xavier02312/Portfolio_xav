@@ -30,13 +30,19 @@ switch($uri) {
 		$controller->new();
 		break;
 
+	// Administration - Supprimer un projet
+	case '/project/delete':
+		$controller = new AdminController();
+		$controller->delete();
+		break;
+
 	// Fixtures
 	case '/fixtures':
 		$controller = new FixturesController();
 		$controller->populate();
 		break;
 
-	// Error 404
+	// Error 404 - Page not found
     default:
         $controller = new ErrorController();
         $controller->notFound();

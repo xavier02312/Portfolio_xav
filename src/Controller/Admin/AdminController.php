@@ -66,4 +66,21 @@ class AdminController
 		// Charge la vue associée contenant le formulaire d'ajout
 		require_once __DIR__ .'../../../../templates/admin/new.php';
 	}
+
+	/**
+	 * Supprimer un projet
+	 */
+	public function delete()
+	{
+		// Supprimer un projet
+		$projetRepository = new ProjectRepository();
+		$delete = $projetRepository->delete($_GET['id']);
+
+		// Génère un message selon la réussite de la suppression
+		$message = $delete === 1 ? 'Le projet à bien été supprimé' : 'Ce projet n\'existe pas';
+		$success = $delete === 1 ? 'success' : 'danger';
+
+		// Redirige vers la liste des projets
+		header("Location: /projects?message=$message&success=$success");
+	}
 }

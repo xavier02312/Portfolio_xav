@@ -32,6 +32,13 @@
 		<div class="w-50 mx-auto pt-5">
 			<h1 class="fs-3 mb-4">Les projets</h1>
 
+            <!-- Message flash -->
+			<?php if(isset($_GET['message'])): ?>
+                <div class="alert alert-<?php echo $_GET['success']; ?>" role="alert">
+					<?php echo $_GET['message']; ?>
+                </div>
+			<?php endif; ?>
+
             <table class="table">
                 <thead>
                     <tr>

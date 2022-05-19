@@ -2,8 +2,8 @@
 
 require_once __DIR__ .'../../Repository/ProjectRepository.php';
 
-class HomeController {
-
+class HomeController
+{
     /**
      * Homepage
      */

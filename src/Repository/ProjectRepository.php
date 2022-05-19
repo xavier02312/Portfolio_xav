@@ -6,8 +6,8 @@ require_once __DIR__ .'../../Entity/Project.php';
 /**
  * Gère le CRUD sur la table "project"
  */
-class ProjectRepository extends Db {
-
+class ProjectRepository extends Db
+{
 	/**
 	 * Insert des données
 	 */
@@ -55,6 +55,23 @@ class ProjectRepository extends Db {
 		}
 		catch(Exception $exception) {
 			die("Erreur lors de la sélection en table project : {$exception->getMessage()}");
+		}
+	}
+
+	/**
+	 * Supprimer un enregistrement
+	 */
+	public function delete(int $id)
+	{
+		try {
+			$query = $this->getDb()->prepare('DELETE FROM project WHERE id = :id');
+			$query->bindValue(':id', $id, PDO::PARAM_INT);
+			$query->execute();
+
+			return $query->rowCount();
+		}
+		catch(Exception $exception) {
+			die("Erreur lors du vidage de la table project : {$exception->getMessage()}");
 		}
 	}
 

@@ -1,7 +1,7 @@
 <?php
 
-class ErrorController {
-
+class ErrorController
+{
     /**
      * Erreur 404
      * Page non trouvée

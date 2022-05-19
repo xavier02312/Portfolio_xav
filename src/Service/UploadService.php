@@ -6,8 +6,8 @@
  * Un service est une classe gérant une action précise afin d'alléger
  * le controller en termes de code
  */
-class UploadService {
-
+class UploadService
+{
 	// Dossier dans le dossier "public" contenant les fichiers uploads
 	private const PATH_DIR = 'preview-projects';
 
