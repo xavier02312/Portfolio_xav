@@ -10,6 +10,19 @@ require_once __DIR__ .'../../../Entity/Project.php';
 class AdminController
 {
 	/**
+	 * Liste tous les projets
+	 */
+	public function index()
+	{
+		// Sélectionne tous les projets
+		$projetRepository = new ProjectRepository();
+		$projects = $projetRepository->all();
+
+		// Charge la vue associée
+		require_once __DIR__ .'../../../../templates/admin/index.php';
+	}
+
+	/**
 	 * Ajoute un nouveau projet
 	 */
 	public function new()
@@ -51,6 +64,6 @@ class AdminController
 		}
 
 		// Charge la vue associée contenant le formulaire d'ajout
-		require_once __DIR__ .'../../../../templates/project/new.php';
+		require_once __DIR__ .'../../../../templates/admin/new.php';
 	}
 }

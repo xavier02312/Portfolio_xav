@@ -11,17 +11,14 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Portfolio</a>
+                <a class="navbar-brand" href="/">Portfolio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/project/add">Ajouter un projet</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link text-danger" href="/projects">Administration</a>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +34,7 @@
             <!-- Even -->
             <?php if(0 === $i % 2): ?>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-6 p-0">
                             <img src="preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="w-100">
                         </div>
                         <div class="col-6 m-auto p-5">
@@ -50,12 +47,12 @@
             <!-- Odd -->
             <?php else: ?>
                 <div class="row">
-                    <div class="col-6 m-auto p-5 text-end">
+                    <div class="col-6 m-auto text-end p-5">
                         <h2><?php echo $project->getTitle(); ?></h2>
                         <p><?php echo $project->getDescription(); ?></p>
                         <a href="/project/detail?id=<?php echo $project->getId(); ?>" title="<?php echo $project->getTitle(); ?>" class="btn btn-success">View case study</a>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 p-0">
                         <img src="preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="w-100">
                     </div>
                 </div>

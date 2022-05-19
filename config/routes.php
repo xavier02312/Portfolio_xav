@@ -18,7 +18,13 @@ switch($uri) {
         $controller->index();
         break;
 
-	// Ajout d'un projet
+	// Administration - Liste des projets
+	case '/projects':
+		$controller = new AdminController();
+		$controller->index();
+		break;
+
+	// Administration - Ajout d'un projet
 	case '/project/add':
 		$controller = new AdminController();
 		$controller->new();
