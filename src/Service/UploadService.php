@@ -40,11 +40,9 @@ class UploadService
 				// Retourne le nouveau du fichier
 				return $newName;
 			}
-
-			return "Le poids du fichier n'est pas accepté";
 		}
 
-		return "Ce format de fichier n'est pas accepté";
+		return false;
 	}
 
 	/**

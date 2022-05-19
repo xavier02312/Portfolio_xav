@@ -30,11 +30,11 @@ class AdminController
 		// Si le formulaire est envoyé
 		if (!empty($_POST)) {
 
-			// Test des superglobales
-			// dump($_POST, $_FILES);
-
 			// Permet de mettre le bandeau du message en vert sur la vue
 			$success = 'success';
+
+			// Test des superglobales
+			// dump($_POST, $_FILES);
 
 			// Vérifie que les champs soient bien remplis
 			if (!empty($_POST['title']) && !empty($_POST['description']) && $_FILES['preview']['error'] === 0) {
@@ -43,17 +43,24 @@ class AdminController
 				$uploadService = new UploadService;
 				$file = $uploadService->upload($_FILES['preview']);
 
-				// Créer un objet avec l'entité Project contenant les données du formulaire
-				$project = (new Project())
-					->setTitle($_POST['title'])
-					->setDescription($_POST['description'])
-					->setPreview($file);
+				// Si aucune erreur lors de l'upload
+				if ($file) {
+					// Créer un objet avec l'entité Project contenant les données du formulaire
+					$project = (new Project())
+						->setTitle($_POST['title'])
+						->setDescription($_POST['description'])
+						->setPreview($file);
 
-				// Insère le projet en table
-				$projetRepository = new ProjectRepository();
-				$projetRepository->add($project);
+					// Insère le projet en table
+					$projetRepository = new ProjectRepository();
+					$projetRepository->add($project);
 
-				$message = 'Le nouveau projet est correctement enregistré';
+					$message = 'Le nouveau projet est correctement enregistré';
+				}
+				else {
+					$success = 'danger';
+					$message = 'Le fichier est incorrect';
+				}
 			}
 
 			// Sinon retourne une erreur
@@ -65,6 +72,71 @@ class AdminController
 
 		// Charge la vue associée contenant le formulaire d'ajout
 		require_once __DIR__ .'../../../../templates/admin/new.php';
+	}
+
+	/**
+	 * Edite un projet
+	 */
+	public function edit()
+	{
+		// Sélectionne un projet
+		$projetRepository = new ProjectRepository();
+		$project = $projetRepository->select($_GET['id']);
+
+		// Si le formulaire est envoyé
+		if (!empty($_POST)) {
+
+			// Permet de mettre le bandeau du message en vert sur la vue
+			$success = 'success';
+			$error = false;
+
+			// Vérifie que les champs soient bien remplis
+			if (!empty($_POST['title']) && !empty($_POST['description'])) {
+
+				// Upload si un fichier est envoyé
+				if ($_FILES['preview']['error'] === 0) {
+					// Appelle le service d'upload pour gérer le fichier
+					$uploadService = new UploadService;
+					$file = $uploadService->upload($_FILES['preview']);
+
+					// Si aucune erreur lors de l'upload
+					if ($file) {
+						// Supprime l'ancienne image
+						unlink("preview-projects/{$project->getPreview()}");
+
+						// Stocke le nouveau nom de l'image
+						$project->setPreview($file);
+					}
+					else {
+						$error = true;
+						$success = 'danger';
+						$message = 'Le fichier est incorrect';
+					}
+				}
+
+				// Si aucune erreur généré lors d'un potentiel upload, on met à jour
+				if (!$error) {
+					// Créer un objet avec l'entité Project contenant les données du formulaire
+					$project->setTitle($_POST['title']);
+					$project->setDescription($_POST['description']);
+
+					// Edite le projet en table
+					$projetRepository = new ProjectRepository();
+					$projetRepository->edit($project);
+
+					$message = 'Le nouveau projet est correctement modifié';
+				}
+			}
+
+			// Sinon retourne une erreur
+			else {
+				$success = 'danger';
+				$message = 'Tous les champs sont obligatoires';
+			}
+		}
+
+		// Charge la vue associée contenant le formulaire d'édition
+		require_once __DIR__ .'../../../../templates/admin/edit.php';
 	}
 
 	/**

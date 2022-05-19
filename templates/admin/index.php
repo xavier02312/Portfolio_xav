@@ -55,6 +55,9 @@
                             <td><img src="preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="rounded w-25"></td>
                             <td><?php echo $project->getTitle(); ?></td>
                             <td>
+                                <a href="/project/edit?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-secondary">
+                                    Editer ce projet
+                                </a>
                                 <a href="/project/delete?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-danger">
                                     Supprimer ce projet
                                 </a>

@@ -30,6 +30,12 @@ switch($uri) {
 		$controller->new();
 		break;
 
+	// Administration - Edite un projet
+	case '/project/edit':
+		$controller = new AdminController();
+		$controller->edit();
+		break;
+
 	// Administration - Supprimer un projet
 	case '/project/delete':
 		$controller = new AdminController();

@@ -29,6 +29,26 @@ class ProjectRepository extends Db
 	}
 
 	/**
+	 * Met des données à jour
+	 */
+	public function edit(Project $project)
+	{
+		try {
+			$query = $this->getDb()->prepare("UPDATE project SET title = :title, description = :description, preview = :preview, updated_at = :updated_at WHERE id = :id");
+			$query->bindValue(':title', $project->getTitle());
+			$query->bindValue(':description', $project->getDescription());
+			$query->bindValue(':preview', $project->getPreview());
+			$query->bindValue(':updated_at', $project->getUpdatedAt());
+			$query->bindValue(':id', $project->getId());
+
+			return $query->execute();
+		}
+		catch(Exception $exception) {
+			die("Erreur lors de la mise à jour en table project : {$exception->getMessage()}");
+		}
+	}
+
+	/**
 	 * Sélectionne toutes les données
 	 */
 	public function all()
@@ -55,6 +75,37 @@ class ProjectRepository extends Db
 		}
 		catch(Exception $exception) {
 			die("Erreur lors de la sélection en table project : {$exception->getMessage()}");
+		}
+	}
+
+	/**
+	 * Sélectionne un enregistrement
+	 */
+	public function select(int $id)
+	{
+		try {
+			$query = $this->getDb()->prepare('SELECT * FROM project WHERE id = :id');
+			$query->bindValue(':id', $id, PDO::PARAM_INT);
+			$query->execute();
+
+			// Stock l'enregistrement trouvé dans une variable
+			$project = $query->fetch();
+
+			if ($project) {
+				// Créer un objet avec l'entité de la table voulue
+				$entityProject = (new Project())
+					->setId($project['id'])
+					->setTitle($project['title'])
+					->setDescription($project['description'])
+					->setPreview($project['preview'])
+					->setCreatedAt($project['created_at'])
+					->setUpdatedAt($project['updated_at']);
+			}
+
+			return $entityProject ?? false;
+		}
+		catch(Exception $exception) {
+			die("Erreur lors de la sélection dans la table project : {$exception->getMessage()}");
 		}
 	}
 
