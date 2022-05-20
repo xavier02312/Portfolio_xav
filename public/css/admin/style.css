@@ -1,0 +1,13 @@
+img {
+    width: 65%;
+    border-radius: 6px;
+}
+
+table tr td:first-child {
+    width: 15%;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+    text-align: right;
+}

@@ -6,33 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Administration - Portfolio</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	</head>
+        <link rel="stylesheet" href="css/admin/style.css">
+    </head>
 	<body>
-		<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-			<div class="container">
-				<a class="navbar-brand" href="/">Portfolio</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">Les projets</a>
-                        </li>
-						<li class="nav-item">
-							<a class="nav-link" href="/admin/project/add">Ajouter un projet</a>
-						</li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="/logout">Déconnexion</a>
-                        </li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+        <!-- Navigation -->
+		<?php require_once __DIR__. '/../layouts/admin/nav.php'; ?>
 
 		<!-- Formulaire d'ajout d'un nouveau projet -->
-		<div class="w-50 mx-auto pt-5">
+		<div class="w-75 mx-auto pt-5">
 			<h1 class="fs-3 mb-4">Les projets</h1>
 
             <!-- Message flash -->
@@ -42,10 +23,9 @@
                 </div>
 			<?php endif; ?>
 
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Aperçu</th>
                         <th scope="col">Titre</th>
                         <th scope="col">Actions</th>
@@ -54,15 +34,20 @@
                 <tbody>
                     <?php foreach($projects as $project): ?>
                         <tr>
-                            <th scope="row"><?php echo $project->getId(); ?></th>
-                            <td><img src="preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="rounded w-25"></td>
-                            <td><?php echo $project->getTitle(); ?></td>
-                            <td>
+                            <td><img src="preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>"></td>
+                            <td class="py-4"><?php echo $project->getTitle(); ?></td>
+                            <td class="py-3">
                                 <a href="/admin/project/edit?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-secondary">
-                                    Editer ce projet
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
                                 </a>
                                 <a href="/admin/project/delete?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-danger">
-                                    Supprimer ce projet
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
                                 </a>
                             </td>
                         </tr>

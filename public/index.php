@@ -6,6 +6,7 @@
  */
 session_start();
 
+// Inclus le routeur et l'autoloader du dossier vendor pour l'utilisation des dépendances
 require_once '../core/Router.php';
 require_once '../vendor/autoload.php';
 
