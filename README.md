@@ -24,5 +24,5 @@ Insérer un jeu de données d'essais. Depuis votre navigateur, rendez-vous sur l
 
 URL d'accès : `/admin`.
 
-Identifiant : `admin`
+Identifiant : `admin`  
 Mot de passe : `secret`
