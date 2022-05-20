@@ -22,9 +22,7 @@ Insérer un jeu de données d'essais. Depuis votre navigateur, rendez-vous sur l
 
 ## Administration
 
-Identifiant et mot de passe de l'administrateur
+URL d'accès : `/admin`.
 
-```
-identifiant : admin
-mot de passe :secret
-```
+Identifiant : `admin`
+Mot de passe : `secret`
