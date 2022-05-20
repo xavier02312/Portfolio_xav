@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Démarre la session dans le point d'entrée afin que celle-ci
+ * soit utilisable dans la totalité de mon application
+ */
+session_start();
+
 require_once '../core/Router.php';
 require_once '../vendor/autoload.php';
 

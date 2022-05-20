@@ -18,11 +18,14 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/projects">Les projets</a>
+                            <a class="nav-link" href="/admin">Les projets</a>
                         </li>
 						<li class="nav-item">
-							<a class="nav-link" href="/project/add">Ajouter un projet</a>
+							<a class="nav-link" href="/admin/project/add">Ajouter un projet</a>
 						</li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="/logout">Déconnexion</a>
+                        </li>
 					</ul>
 				</div>
 			</div>
@@ -55,10 +58,10 @@
                             <td><img src="preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="rounded w-25"></td>
                             <td><?php echo $project->getTitle(); ?></td>
                             <td>
-                                <a href="/project/edit?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-secondary">
+                                <a href="/admin/project/edit?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-secondary">
                                     Editer ce projet
                                 </a>
-                                <a href="/project/delete?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-danger">
+                                <a href="/admin/project/delete?id=<?php echo $project->getId(); ?>" title="Supprimer ce projet" class="btn btn-outline-danger">
                                     Supprimer ce projet
                                 </a>
                             </td>

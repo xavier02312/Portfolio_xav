@@ -16,14 +16,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/projects">Les projets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/project/add">Ajouter un projet</a>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Les projets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/project/add">Ajouter un projet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="/logout">Déconnexion</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

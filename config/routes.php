@@ -2,6 +2,7 @@
 
 // Public
 require_once '../src/Controller/HomeController.php';
+require_once '../src/Controller/AuthController.php';
 require_once '../src/Controller/FixturesController.php'; // Warning !
 require_once '../src/Controller/ErrorController.php';
 
@@ -24,26 +25,38 @@ switch($uri) {
 		$controller->details();
 		break;
 
+	// Connexion
+	case '/login':
+		$controller = new AuthController();
+		$controller->login();
+		break;
+
+	// Déconnexion
+	case '/logout':
+		$controller = new AuthController();
+		$controller->logout();
+		break;
+
 	// Administration - Liste des projets
-	case '/projects':
+	case '/admin':
 		$controller = new AdminController();
 		$controller->index();
 		break;
 
 	// Administration - Ajout d'un projet
-	case '/project/add':
+	case '/admin/project/add':
 		$controller = new AdminController();
 		$controller->new();
 		break;
 
 	// Administration - Edite un projet
-	case '/project/edit':
+	case '/admin/project/edit':
 		$controller = new AdminController();
 		$controller->edit();
 		break;
 
 	// Administration - Supprimer un projet
-	case '/project/delete':
+	case '/admin/project/delete':
 		$controller = new AdminController();
 		$controller->delete();
 		break;

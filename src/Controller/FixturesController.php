@@ -1,6 +1,9 @@
 <?php
 
 require_once __DIR__ .'../../Repository/ProjectRepository.php';
+require_once __DIR__ .'../../Repository/UserRepository.php';
+require_once __DIR__ .'../../Entity/Project.php';
+require_once __DIR__ .'../../Entity/User.php';
 
 class FixturesController
 {
@@ -16,9 +19,11 @@ class FixturesController
 	{
 		$faker = Faker\Factory::create();
 		$projectRepository = new ProjectRepository();
+		$userRepository = new UserRepository();
 
 		// Vide la table SQL avant une insertion
 		$projectRepository->drop();
+		$userRepository->drop();
 
 		// Boucle X fois
 		for ($i = 0; $i <= self::MAX; $i++) {
@@ -37,6 +42,14 @@ class FixturesController
 			// Passe cet objet au repository pour insertion en BDD
 			$projectRepository->add($project);
 		}
+
+		// Insère un administrateur
+		$user = (new User())
+			->setUsername('admin')
+			->setPassword(password_hash('secret', PASSWORD_ARGON2I));
+
+		// Passe cet objet au repository pour insertion en BDD
+		$userRepository->add($user);
 
 		// Affiche la vue associée
 		require_once __DIR__ .'../../../templates/fixtures/index.php';

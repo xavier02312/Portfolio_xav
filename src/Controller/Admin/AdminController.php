@@ -10,6 +10,24 @@ require_once __DIR__ .'../../../Entity/Project.php';
 class AdminController
 {
 	/**
+	 * Utilises le constructeur pour vérifier si le visiteur à l'autorisation d'accéder
+	 * à l'administration
+	 *
+	 * Le fait de placer ce code dans le controller protège toutes les vues
+	 * de mon administration ;)
+	 */
+	public function __construct()
+	{
+		/**
+		 * Si la session "user" n'existe pas ou que celle-ci ne possède pas le rôle "ROLE_ADMIN",
+		 * alors je redirige le visiteur sur la page de connexion
+		 */
+		if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+			header('Location: /login');
+		}
+	}
+
+	/**
 	 * Liste tous les projets
 	 */
 	public function index()
