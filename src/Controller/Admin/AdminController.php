@@ -171,6 +171,6 @@ class AdminController
 		$success = $delete === 1 ? 'success' : 'danger';
 
 		// Redirige vers la liste des projets
-		header("Location: /projects?message=$message&success=$success");
+		header("Location: /admin?message=$message&success=$success");
 	}
 }
