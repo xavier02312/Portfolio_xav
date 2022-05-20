@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Portfolio</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/header.css">
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a class="navbar-brand" href="/">Portfolio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +25,9 @@
                 </div>
             </div>
         </nav>
+
+        <!-- Header -->
+		<?php require_once 'layouts/header.php'; ?>
 
         <!-- Projets -->
         <?php
@@ -59,5 +63,14 @@
             <?php endif; ?>
 
         <?php $i++; endforeach; ?>
+
+        <?php if (count($projects) === 0): ?>
+            <div class="container my-5 py-5">
+                <h3 class="fs-4">Aucun projet pour le moment... la tristesse 😿</h3>
+            </div>
+		<?php endif; ?>
+
+        <!-- Footer -->
+		<?php require_once 'layouts/footer.php'; ?>
     </body>
 </html>

@@ -15,7 +15,7 @@
     </head>
 	<body>
 		<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg">
+		<nav class="navbar navbar-expand-lg bg-light navbar-light">
 			<div class="container">
 				<a class="navbar-brand" href="/">Portfolio</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,11 +31,19 @@
 			</div>
 		</nav>
 
-        <div class="w-75 mx-auto">
-            <img src="../../preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="w-100 rounded mt-5">
-            <h1 class="fs-1 mt-5"><?php echo $project->getTitle(); ?></h1>
-            <p class="mt-3 mb-5"><?php echo $project->getDescription(); ?></p>
-        </div>
+		<?php if (!$project): ?>
+            <div class="container my-5 py-5">
+                <h3 class="fs-4">Cramé... la main dans le sac... 😲</h3>
+            </div>
+		<?php else: ?>
+            <div class="w-75 mx-auto">
+                <img src="../../preview-projects/<?php echo $project->getPreview(); ?>" alt="<?php echo $project->getTitle(); ?>" class="w-100 rounded mt-5">
+                <h1 class="fs-1 mt-5"><?php echo $project->getTitle(); ?></h1>
+                <p class="mt-3 mb-5"><?php echo $project->getDescription(); ?></p>
+            </div>
+        <?php endif; ?>
 
+        <!-- Footer -->
+		<?php require_once 'layouts/footer.php'; ?>
 	</body>
 </html>
