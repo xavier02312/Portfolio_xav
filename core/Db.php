@@ -16,7 +16,7 @@ abstract class Db {
     private const DB_PASS = '';
 
     // Nom de la base de données
-    private const DB_NAME = 'portfolio';
+    private const DB_NAME = 'portfolio_xav';
 
     /**
      * Singleton

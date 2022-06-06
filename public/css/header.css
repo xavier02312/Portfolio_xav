@@ -16,3 +16,8 @@ header h1 {
 header p {
     font-size: 1.5rem;
 }
+
+/* Color Stroke*/
+header .liner_gradient {
+    border: 2px solid black;    
+}

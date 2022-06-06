@@ -11,7 +11,8 @@
     <div class="w-50 mx-auto pt-5">
         <h1 class="fs-1">Erreur 404</h1>
         <p>Page non trouvée 🤷‍️</p>
-        <a href="/" title="homepage">Homepage</a>
+        <img src="imgs/404.png" alt="error">
+        <a href="/" title="homepage" class="btn btn-info">Homepage</a>
     </div>
     </body>
 </html>

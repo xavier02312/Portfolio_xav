@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `portfolio`
+-- Base de données : `portfolio_xav`
 --
 
 -- --------------------------------------------------------
@@ -49,6 +49,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
+-- Structure de la table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int NOT NULL,
+  `firstname` varchar(150) NOT NULL,
+  `lastname` varchar(150) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+--
 -- Index pour les tables déchargées
 --
 
@@ -65,6 +77,11 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -80,6 +97,11 @@ ALTER TABLE `project`
 ALTER TABLE `user`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
+--
+-- AUTO_INCREMENT pour la table `project`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
